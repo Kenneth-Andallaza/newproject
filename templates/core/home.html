@@ -68,7 +68,7 @@
         {% for service in popular_services %}
         <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:'50' }}">
             <div class="card rounded-4 shadow-sm border-0 h-100">
-                <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/service-card.jpg' %}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ service.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
+                <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/' %}{{ service.static_image }}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ service.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
                 <div class="card-body">
                     <span class="badge bg-primary mb-2">{{ service.category.name }}</span>
                     <h5 class="card-title">{{ service.title }}</h5>

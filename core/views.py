@@ -5,10 +5,28 @@ from services.models import Category, Service
 from .forms import ContactForm
 from .models import BlogPost
 
+SERVICE_IMAGE_MAP = {
+    'leak-detection-repair': 'Leak Detection & Repair.jpg',
+    'drain-cleaning-clog-removal': 'Drain Cleaning & Clog Removal.jpg',
+    'outlet-lighting-installation': 'Outlet & Lighting Installation.jpg',
+    'circuit-troubleshooting-repair': 'Circuit Troubleshooting & Repair.jpg',
+    'deep-home-cleaning': 'Deep Home Cleaning.jpg',
+    'move-in-move-out-cleaning': 'MoveInMoveOutCleaning.jpg',
+    'ac-tune-up-maintenance': 'AC Tune-Up & Maintenance.jpg',
+    'heating-system-inspection': 'Heating System Inspection.jpg',
+    'home-repair-assembly': 'Home Repair & Assembly.jpg',
+    'interior-painting-touch-up': 'Interior Painting Touch-Up.jpg',
+}
+
+
+def _assign_static_image(service, default='service-card.jpg'):
+    service.static_image = SERVICE_IMAGE_MAP.get(service.slug, default)
+    return service
+
 
 def home(request):
     categories = Category.objects.all()[:8]
-    popular_services = Service.objects.filter(is_featured=True)[:6]
+    popular_services = [ _assign_static_image(service) for service in Service.objects.filter(is_featured=True)[:6] ]
     testimonials = [
         {
             'name': 'Sophia Khan',
