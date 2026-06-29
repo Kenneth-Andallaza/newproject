@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Category, Service
+from urllib.parse import quote
 
 SERVICE_IMAGE_MAP = {
     'leak-detection-repair': 'Leak Detection & Repair.jpg',
@@ -16,7 +17,8 @@ SERVICE_IMAGE_MAP = {
 
 
 def _assign_static_image(service, default='service-card.jpg'):
-    service.static_image = SERVICE_IMAGE_MAP.get(service.slug, default)
+    filename = SERVICE_IMAGE_MAP.get(service.slug, default)
+    service.static_image_url = f'/static/images/{quote(filename)}'
     return service
 
 
