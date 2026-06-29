@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <p class="text-uppercase text-primary fw-bold mb-3">Trusted home services</p>
+                <h1 class="display-5 fw-bold">Book verified professionals for every home project.</h1>
+                <p class="text-muted mt-4">From plumbing and electric repairs to cleaning and aircon maintenance, ServiceHub makes it easy to book expert help with transparent pricing and fast scheduling.</p>
+                <div class="d-flex gap-2 mt-4">
+                    <a href="{% url 'service-list' %}" class="btn btn-primary btn-lg rounded-pill">Book a Service</a>
+                    <a href="{% url 'about' %}" class="btn btn-outline-secondary btn-lg rounded-pill">Learn More</a>
+                </div>
+                <div class="mt-5 p-4 bg-light rounded-4 shadow-sm">
+                    <form action="{% url 'service-list' %}" method="get" class="row g-2 align-items-center">
+                        <div class="col-md-7">
+                            <input type="search" name="q" class="form-control rounded-pill" placeholder="Search services, professionals or tasks">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select rounded-pill" name="category">
+                                <option value="">All categories</option>
+                                {% for category in categories %}
+                                <option value="{{ category.slug }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary rounded-pill w-100" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="position-relative">
+                    <img src="{% static 'images/A happy homeowner interacting with the technician..jpg' %}" alt="Happy homeowner with technician" class="img-fluid rounded-4 shadow-lg">
+                    <div class="position-absolute top-0 end-0 p-4 bg-white rounded-4 shadow-sm" style="width: 320px; transform: translate(20%, -10%);">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle p-3"><i class="bi bi-tools fs-4"></i></div>
+                            <div class="ms-3">
+                                <h6 class="mb-0">Same-day service</h6>
+                                <small class="text-muted">Verified professionals</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-info text-white rounded-circle p-3"><i class="bi bi-calendar-check fs-4"></i></div>
+                            <div class="ms-3">
+                                <h6 class="mb-0">Flexible scheduling</h6>
+                                <small class="text-muted">Pick your date & time</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row text-center mb-5" data-aos="fade-up">
+        <div class="col-lg-8 mx-auto">
+            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2">Popular services</span>
+            <h2 class="mt-4 fw-bold">Find great service providers for every task</h2>
+            <p class="text-muted">Browse curated professionals with ratings, reviews, and transparent price ranges.</p>
+        </div>
+    </div>
+    <div class="row g-4">
+        {% for service in popular_services %}
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:'50' }}">
+            <div class="card rounded-4 shadow-sm border-0 h-100">
+                <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/service-card.jpg' %}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ service.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
+                <div class="card-body">
+                    <span class="badge bg-primary mb-2">{{ service.category.name }}</span>
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="text-muted">{{ service.short_description }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div>
+                            <span class="text-primary fw-semibold">{{ service.price_range }}</span>
+                            <small class="d-block text-muted">{{ service.estimated_time }}</small>
+                        </div>
+                        <a href="{{ service.get_absolute_url }}" class="btn btn-outline-primary btn-sm rounded-pill">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="fw-bold">Why customers choose ServiceHub</h2>
+                <p class="text-muted">A premium booking experience backed by verified talent, transparent pricing, and proactive support.</p>
+                <ul class="list-unstyled text-muted mt-4">
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Verified professionals with strong reviews.</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Easy scheduling, instant confirmation, and tracking.</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Modern mobile-ready experience across devices.</li>
+                </ul>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="card rounded-4 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3"><i class="bi bi-people-fill fs-3 text-primary me-3"></i><h6 class="mb-0">Trusted pros</h6></div>
+                            <p class="text-muted">Every partner is vetted for reliability, responsiveness, and quality.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card rounded-4 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3"><i class="bi bi-shield-check fs-3 text-primary me-3"></i><h6 class="mb-0">Transparent pricing</h6></div>
+                            <p class="text-muted">Know the price range and expected duration before you book.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card rounded-4 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3"><i class="bi bi-clock-history fs-3 text-primary me-3"></i><h6 class="mb-0">Fast response</h6></div>
+                            <p class="text-muted">Quick service delivery for urgent repairs and maintenance tasks.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card rounded-4 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3"><i class="bi bi-star-fill fs-3 text-primary me-3"></i><h6 class="mb-0">Quality guarantee</h6></div>
+                            <p class="text-muted">Customer-focused support and on-time service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row text-center mb-5" data-aos="fade-up">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="fw-bold">How it works</h2>
+            <p class="text-muted">A simple booking flow designed to keep service requests fast and predictable.</p>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card rounded-4 shadow-sm border-0 p-4 h-100">
+                <div class="mb-3 text-primary fs-2"><i class="bi bi-search"></i></div>
+                <h5>Choose a service</h5>
+                <p class="text-muted">Search by category, compare options, and pick the work you need.</p>
+            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card rounded-4 shadow-sm border-0 p-4 h-100">
+                <div class="mb-3 text-primary fs-2"><i class="bi bi-calendar2-check"></i></div>
+                <h5>Schedule your booking</h5>
+                <p class="text-muted">Select a convenient date, time, and address in one step.</p>
+            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card rounded-4 shadow-sm border-0 p-4 h-100">
+                <div class="mb-3 text-primary fs-2"><i class="bi bi-hand-thumbs-up"></i></div>
+                <h5>Enjoy the service</h5>
+                <p class="text-muted">Track progress, communicate with your partner, and rate the experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold">Customer stories</h2>
+                <p class="text-muted">Real reviews from homeowners and busy families who rely on ServiceHub.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for testimonial in testimonials %}
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="card rounded-4 shadow-sm p-4 h-100">
+                    <p class="text-muted">"{{ testimonial.message }}"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="avatar rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width:56px; height:56px;">{{ testimonial.name|slice:":1" }}</div>
+                        <div>
+                            <h6 class="mb-0">{{ testimonial.name }}</h6>
+                            <small class="text-muted">{{ testimonial.role }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row gy-4 align-items-center">
+        <div class="col-lg-5" data-aos="fade-right">
+            <div class="p-4 bg-primary text-white rounded-4 shadow-sm">
+                <h3 class="fw-bold">Built for modern homes.</h3>
+                <p>ServiceHub helps homeowners manage repair, maintenance and cleaning with a curated booking experience.</p>
+            </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+            <div class="row g-4">
+                <div class="col-sm-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm text-center">
+                        <h3 class="text-primary fw-bold">{{ stats.bookings }}</h3>
+                        <p class="text-muted mb-0">Bookings delivered</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm text-center">
+                        <h3 class="text-primary fw-bold">{{ stats.professionals }}</h3>
+                        <p class="text-muted mb-0">Service experts</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm text-center">
+                        <h3 class="text-primary fw-bold">{{ stats.customers }}</h3>
+                        <p class="text-muted mb-0">Happy customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold">Latest insights</h2>
+                <p class="text-muted">Helpful home service tips and expert advice from the ServiceHub team.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for post in latest_blogs %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="card rounded-4 shadow-sm border-0 h-100">
+                    <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'images/blog-card.jpg' %}{% endif %}" class="card-img-top rounded-top-4" alt="{{ post.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="text-muted">{{ post.excerpt }}</p>
+                        <a href="{{ post.get_absolute_url }}" class="stretched-link text-primary">Read more</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

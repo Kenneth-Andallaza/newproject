@@ -1,0 +1,81 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F8FAFC;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+}
+
+.card {
+    border-radius: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #2563EB;
+    border-color: #2563EB;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.badge {
+    border-radius: 999px;
+}
+
+footer {
+    font-size: 0.95rem;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: none;
+    width: 48px;
+    height: 48px;
+    z-index: 999;
+}
+
+.avatar {
+    font-size: 1.3rem;
+}
+
+input, textarea, select {
+    border-radius: 999px;
+}
+
+textarea {
+    border-radius: 1rem;
+}
+
+.form-control, .form-select {
+    border: 1px solid #e2e8f0;
+}
+
+.card-body img, .card-body picture {
+    max-width: 100%;
+}
+
+.btn-outline-secondary {
+    color: #1e293b;
+    border-color: #cbd5e1;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8fafc;
+}
+
+.service-image {
+    height: 220px;
+    object-fit: cover;
+}
+
+.service-hero-image {
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
+}

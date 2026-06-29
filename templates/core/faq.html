@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+            <h1 class="fw-bold">Frequently Asked Questions</h1>
+            <p class="text-muted mt-3">Everything you need to know about booking, payments, and services.</p>
+        </div>
+        <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">How do I book a service?</button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">Search for a service, view details, choose your schedule and address, then submit your booking request.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Can I cancel a booking?</button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">Yes. You can cancel bookings from your booking history as long as the status is not completed or already cancelled.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How do I contact the service professional?</button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">Our team will share on-site contact details after the booking is confirmed, and you can also view updates in your dashboard.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

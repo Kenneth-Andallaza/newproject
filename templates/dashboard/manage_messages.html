@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-up">
+        <div>
+            <h1 class="fw-bold">Contact messages</h1>
+            <p class="text-muted">Review customer inquiries and requests here.</p>
+        </div>
+        <a href="{% url 'dashboard-home' %}" class="btn btn-outline-primary rounded-pill">Dashboard</a>
+    </div>
+    <div class="card rounded-4 shadow-sm border-0">
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages_list %}
+                    <tr>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.email }}</td>
+                        <td>{{ message.subject }}</td>
+                        <td>{{ message.created_at|date:'M d, Y' }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="4" class="text-center text-muted">No messages available.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

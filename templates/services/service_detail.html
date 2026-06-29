@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="container py-5">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-7" data-aos="fade-right">
+            <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/service-detail.svg' %}{% endif %}" class="img-fluid rounded-4 shadow-sm service-hero-image" alt="{{ service.title }}" style="height: 380px; width: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="col-lg-5" data-aos="fade-left">
+            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2">{{ service.category.name }}</span>
+            <h1 class="fw-bold mt-3">{{ service.title }}</h1>
+            <p class="text-muted">{{ service.short_description }}</p>
+            <div class="mt-4 d-flex gap-3 flex-wrap">
+                <span class="badge bg-light text-dark rounded-pill">{{ service.price_range }}</span>
+                <span class="badge bg-light text-dark rounded-pill">{{ service.estimated_time }}</span>
+                <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-star-fill text-warning"></i> {{ service.rating }}</span>
+            </div>
+            <p class="text-muted mt-4">{{ service.description }}</p>
+            <a href="{% url 'create-booking' service.slug %}" class="btn btn-primary rounded-pill px-4">Book Now</a>
+        </div>
+    </div>
+
+    <div class="row mt-5 g-4">
+        <div class="col-md-8" data-aos="fade-up">
+            <div class="card rounded-4 shadow-sm p-4 border-0">
+                <h4 class="fw-bold">Service overview</h4>
+                <p class="text-muted">{{ service.description }}</p>
+                <h5 class="mt-4">What’s included</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i>Transparent price estimate</li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i>Skilled certified professional</li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i>Secure in-app booking and support</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card rounded-4 shadow-sm p-4 border-0">
+                <h5 class="fw-bold">Booking details</h5>
+                <p class="text-muted mb-0">Price range</p>
+                <p class="fw-semibold mt-2">{{ service.price_range }}</p>
+                <p class="text-muted mb-0">Estimated time</p>
+                <p class="fw-semibold mt-2">{{ service.estimated_time }}</p>
+                <p class="text-muted mb-0">Rating</p>
+                <p class="fw-semibold mt-2">{{ service.rating }} / 5.0</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5" data-aos="fade-up">
+        <div class="col-12">
+            <h3 class="fw-bold">Explore more services</h3>
+            <div class="row g-4 mt-3">
+                {% for related in related_services %}
+                <div class="col-md-4">
+                    <div class="card rounded-4 shadow-sm border-0 h-100">
+                        <img src="{% if related.image %}{{ related.image.url }}{% else %}{% static 'images/service-card.svg' %}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ related.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
+                        <div class="card-body">
+                            <h6>{{ related.title }}</h6>
+                            <p class="text-muted small">{{ related.category.name }}</p>
+                            <a href="{{ related.get_absolute_url }}" class="stretched-link text-primary">View service</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

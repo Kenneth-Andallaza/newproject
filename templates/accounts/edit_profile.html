@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+            <div class="card rounded-4 shadow-sm border-0 p-4">
+                <h2 class="fw-bold mb-4">Edit profile</h2>
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">{{ form.phone.label_tag }}{{ form.phone }}</div>
+                        <div class="col-md-6">{{ form.photo.label_tag }}{{ form.photo }}</div>
+                        <div class="col-12">{{ form.about.label_tag }}{{ form.about }}</div>
+                        <div class="col-md-6">{{ form.city.label_tag }}{{ form.city }}</div>
+                        <div class="col-md-6">{{ form.state.label_tag }}{{ form.state }}</div>
+                        <div class="col-12">{{ form.address.label_tag }}{{ form.address }}</div>
+                        <div class="col-12">{{ form.saved_addresses.label_tag }}{{ form.saved_addresses }}</div>
+                    </div>
+                    <div class="mt-4 text-end">
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

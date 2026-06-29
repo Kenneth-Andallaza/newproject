@@ -1,0 +1,6 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#4fb0f5" />
+  <circle cx="600" cy="320" r="160" fill="#ffffff" fill-opacity="0.18" />
+  <text x="600" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="80" fill="#ffffff" font-weight="700">HVAC</text>
+  <text x="600" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#ffffff" opacity="0.85">ServiceHub Sample</text>
+</svg>

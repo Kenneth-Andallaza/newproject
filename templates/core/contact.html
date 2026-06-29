@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container py-5">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-5" data-aos="fade-right">
+            <h1 class="fw-bold">Get in touch with our support team.</h1>
+            <p class="text-muted mt-3">Have a question about booking, a service, or your account? Our team is ready to help.</p>
+            <div class="mt-4">
+                <p><i class="bi bi-telephone-fill text-primary me-2"></i><strong>Phone</strong>: +1 234 567 890</p>
+                <p><i class="bi bi-envelope-fill text-primary me-2"></i><strong>Email</strong>: support@servicehub.com</p>
+                <p><i class="bi bi-geo-alt-fill text-primary me-2"></i><strong>Office</strong>: 500 Startup Avenue, City</p>
+            </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+            <div class="card rounded-4 shadow-sm p-4 border-0">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Send us a message</h3>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                            </div>
+                            <div class="col-12">
+                                {{ form.subject.label_tag }}
+                                {{ form.subject }}
+                            </div>
+                            <div class="col-12">
+                                {{ form.message.label_tag }}
+                                {{ form.message }}
+                            </div>
+                            <div class="col-12 text-end">
+                                <button class="btn btn-primary rounded-pill px-4" type="submit">Submit message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
