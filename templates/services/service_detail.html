@@ -4,7 +4,7 @@
 <section class="container py-5">
     <div class="row g-4 align-items-center">
         <div class="col-lg-7" data-aos="fade-right">
-            <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/service-detail.svg' %}{% endif %}" class="img-fluid rounded-4 shadow-sm service-hero-image" alt="{{ service.title }}" style="height: 380px; width: 100%; object-fit: cover; display: block;">
+            <img src="{% if service.image %}{{ service.image.url }}{% else %}{% static 'images/' %}{{ service.static_image }}{% endif %}" class="img-fluid rounded-4 shadow-sm service-hero-image" alt="{{ service.title }}" style="height: 380px; width: 100%; object-fit: cover; display: block;">
         </div>
         <div class="col-lg-5" data-aos="fade-left">
             <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2">{{ service.category.name }}</span>
@@ -53,7 +53,7 @@
                 {% for related in related_services %}
                 <div class="col-md-4">
                     <div class="card rounded-4 shadow-sm border-0 h-100">
-                        <img src="{% if related.image %}{{ related.image.url }}{% else %}{% static 'images/service-card.svg' %}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ related.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
+                        <img src="{% if related.image %}{{ related.image.url }}{% else %}{% static 'images/' %}{{ related.static_image }}{% endif %}" class="card-img-top rounded-top-4 service-image" alt="{{ related.title }}" style="height: 220px; width: 100%; object-fit: cover; display: block;">
                         <div class="card-body">
                             <h6>{{ related.title }}</h6>
                             <p class="text-muted small">{{ related.category.name }}</p>
