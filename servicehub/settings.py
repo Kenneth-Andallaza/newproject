@@ -27,7 +27,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-z(*^hd9+87h2s&@tvf&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
+# Allow local development and Render-hosted deployments by default.
+# Override with DJANGO_ALLOWED_HOSTS when needed.
+ALLOWED_HOSTS = os.getenv(
+    'DJANGO_ALLOWED_HOSTS',
+    'localhost,127.0.0.1,.onrender.com'
+).split(',')
 
 
 # Application definition
